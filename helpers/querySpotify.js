@@ -7,3 +7,10 @@ const spotifyApi = new SpotifyWebApi({
   clientSecret,
   redirectUri: "http://www.example.com/callback",
 });
+
+spotifyApi.searchTracks('Love')
+  .then(function(data) {
+    console.log('Search by "Love"', data.body);
+  }, function(err) {
+    console.error(err);
+  });
