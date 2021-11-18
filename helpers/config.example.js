@@ -7,4 +7,4 @@ const secretToken = {
   clientSecret: "",
 };
 
-export default secretToken;
+module.exports = secretToken;
