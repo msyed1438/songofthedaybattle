@@ -9,6 +9,15 @@
 	pointer-events: none;
 }
 
+.album-art {
+	border-radius: 5%;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.audio-player {
+	padding-bottom: 50px;
+}
+
 .App-header {
 	background-color: #833c44;
 	min-height: 100vh;

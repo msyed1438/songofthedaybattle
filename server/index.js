@@ -23,7 +23,6 @@ app.get('/api/song_search/:songName', async (req, res) => {
 				mediumAlbumArt: track.album.images[1],
 				largeAlbumArt: track.album.images[0],
 			};
-
 			const previewUrl = track.preview_url;
 			const trackName = track.name;
 			const albumName = track.album.name;
