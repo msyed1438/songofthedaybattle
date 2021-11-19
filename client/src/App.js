@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import ReactAudioPlayer from 'react-audio-player';
 import './App.css';
@@ -9,13 +9,7 @@ function App() {
 	const [searchInput, setSearchInput] = useState('');
 	const [isSearched, setIsSearched] = useState(false);
 
-	useEffect(() => {
-		return () => {
-			setSongData({});
-		};
-	}, []);
-
-	async function searchSpotifyTracks(songName) {
+	function searchSpotifyTracks(songName) {
 		const data = axios
 			.get(`http://localhost:5000/api/song_search/${songName}`)
 			.then((res) => {
@@ -26,16 +20,16 @@ function App() {
 		return data;
 	}
 
-	function change(e) {
+	function handleChange(e) {
 		setSearchInput(e.target.value);
 	}
 
-	const handleKeypress = (e) => {
+	function handleKeypress(e) {
 		if (e.key === 'Enter') {
 			handleClick(e);
 			setSearchInput('');
 		}
-	};
+	}
 
 	async function handleClick(e) {
 		e.preventDefault();
@@ -56,7 +50,7 @@ function App() {
 							<img
 								src={songData.data[0].albumArt.mediumAlbumArt.url}
 								className="album-art"
-								alt="album_art"
+								alt="album-art"
 							/>
 						</a>
 						<div>
@@ -81,10 +75,9 @@ function App() {
 					<input
 						type="text"
 						id="header-search"
-						value={searchInput}
 						placeholder="Search for your favorite song..."
-						name="s"
-						onChange={change}
+						value={searchInput}
+						onChange={handleChange}
 						onKeyPress={handleKeypress}
 					/>
 					<button onClick={handleClick}>Search</button>
