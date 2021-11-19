@@ -20,6 +20,10 @@ function App() {
 			.catch((err) => console.log(err));
 	}
 
+	// function searchSpotifyTracks() {
+
+	// }
+
 	return (
 		<div className="App">
 			<header className="App-header">
