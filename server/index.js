@@ -12,7 +12,7 @@ app.get('/api', (req, res) => {
 	res.send({ data: 'peepeepoopoo check!' });
 });
 
-app.put('/api/song_search/:songName', async (req, res) => {
+app.get('/api/song_search/:songName', async (req, res) => {
 	let data = req.params.songName;
 	console.log('THIS IS WHAT I AM SEARCHING FOR: ' + data);
 	try {
