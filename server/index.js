@@ -17,7 +17,6 @@ app.put('/api/song_search/:songName', async (req, res) => {
 	console.log('THIS IS WHAT I AM SEARCHING FOR: ' + data);
 	try {
 		const query = await q.querySpotify(data);
-		console.log('query: ' + query);
 		res.json(query);
 	} catch (error) {
 		res.send(error);

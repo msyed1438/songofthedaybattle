@@ -16,7 +16,7 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 const querySpotify = (queryString) => {
-	spotifyApi
+	return spotifyApi
 		.clientCredentialsGrant()
 		.then(
 			(data) => {
@@ -34,7 +34,6 @@ const querySpotify = (queryString) => {
 		)
 		.then(() => spotifyApi.searchTracks(queryString))
 		.then((data) => {
-			console.log('Data retrieved', data.body);
 			return data.body;
 		})
 		.catch((err) => {
