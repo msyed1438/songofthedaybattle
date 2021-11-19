@@ -82,6 +82,42 @@ function App() {
 					/>
 					<button onClick={handleClick}>Search</button>
 				</div>
+
+				{isSearched ? (
+					<div>
+						<ul>
+							{songData.data.slice(1, 10).map((items) => {
+								return (
+									<div>
+										<h3>Other suggestions: </h3>
+										<div className="song-list">
+											<a
+												target="_blank"
+												rel="noopener noreferrer"
+												href={items.albumLink}
+											>
+												<img
+													src={items.albumArt.smallAlbumArt.url}
+													className="album-art"
+													alt="album-art"
+												/>
+											</a>
+											<div>
+												<h5>{items.trackName}</h5>
+												<h5>{items.artistName}</h5>
+												<ReactAudioPlayer
+													src={items.previewUrl}
+													className="audio-player"
+													controls
+												/>
+											</div>
+										</div>
+									</div>
+								);
+							})}
+						</ul>
+					</div>
+				) : null}
 			</header>
 		</div>
 	);

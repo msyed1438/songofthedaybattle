@@ -18,6 +18,10 @@
 	padding-bottom: 50px;
 }
 
+.song-list {
+	overflow-y: auto;
+}
+
 .App-header {
 	background-color: #833c44;
 	min-height: 100vh;
