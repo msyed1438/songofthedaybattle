@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import ReactAudioPlayer from 'react-audio-player';
 import Hero from './components/Hero/DefaultHero';
+
 import SearchResult from './components/Search/SearchResult';
+import SearchBar from './components/Search/SearchBar';
+import SearchSuggestions from './components/Search/SearchSuggestions';
+
 import './App.css';
 const axios = require('axios');
 
@@ -42,54 +45,13 @@ function App() {
 		<div className="border-8 border-indigo-600">
 			<div className="border-8 border-red-600">
 				{isSearched ? <SearchResult songData={songData} /> : <Hero />}
-
-				<div className="song-search">
-					<input
-						type="text"
-						id="header-search"
-						placeholder="Search for your favorite song..."
-						value={searchInput}
-						onChange={handleChange}
-						onKeyPress={handleKeypress}
-					/>
-					<button onClick={handleClick}>Search</button>
-				</div>
-
-				{isSearched ? (
-					<div>
-						<ul>
-							<h3>Other suggestions: </h3>
-							{songData.data.slice(1, 10).map((items) => {
-								return (
-									<div>
-										<div className="song-list">
-											<a
-												target="_blank"
-												rel="noopener noreferrer"
-												href={items.albumLink}
-											>
-												<img
-													src={items.albumArt.smallAlbumArt.url}
-													className="album-art"
-													alt="album-art"
-												/>
-											</a>
-											<div>
-												<h5>{items.trackName}</h5>
-												<h5>{items.artistName}</h5>
-												<ReactAudioPlayer
-													src={items.previewUrl}
-													className="audio-player"
-													controls
-												/>
-											</div>
-										</div>
-									</div>
-								);
-							})}
-						</ul>
-					</div>
-				) : null}
+				<SearchBar
+					searchInput={searchInput}
+					handleChange={handleChange}
+					handleKeypress={handleKeypress}
+					handleClick={handleClick}
+				/>
+				{isSearched ? <SearchSuggestions songData={songData} /> : null}
 			</div>
 		</div>
 	);
