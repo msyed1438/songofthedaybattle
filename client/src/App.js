@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import Hero from './components/Hero/DefaultHero';
+import SearchResult from './components/Search/SearchResult';
 import './App.css';
 const axios = require('axios');
 
@@ -40,33 +41,7 @@ function App() {
 	return (
 		<div className="border-8 border-indigo-600">
 			<div className="border-8 border-red-600">
-				{isSearched ? (
-					<div className="border-8 border-green-600">
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href={songData.data[0].albumLink}
-						>
-							<img
-								src={songData.data[0].albumArt.mediumAlbumArt.url}
-								className="album-art"
-								alt="album-art"
-							/>
-						</a>
-						<div>
-							<h2>{songData.data[0].trackName}</h2>
-							<h4>{songData.data[0].artistName}</h4>
-							<ReactAudioPlayer
-								src={songData.data[0].previewUrl}
-								className="audio-player"
-								autoPlay
-								controls
-							/>
-						</div>
-					</div>
-				) : (
-					<Hero />
-				)}
+				{isSearched ? <SearchResult songData={songData} /> : <Hero />}
 
 				<div className="song-search">
 					<input
