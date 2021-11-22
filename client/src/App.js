@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import ReactAudioPlayer from 'react-audio-player';
+import Hero from './components/Hero/DefaultHero';
 import './App.css';
 const axios = require('axios');
 
@@ -38,10 +38,10 @@ function App() {
 	}
 
 	return (
-		<div className="border-0 border-indigo-600">
-			<div className="">
+		<div className="border-8 border-indigo-600">
+			<div className="border-8 border-red-600">
 				{isSearched ? (
-					<div>
+					<div className="border-8 border-green-600">
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
@@ -65,12 +65,7 @@ function App() {
 						</div>
 					</div>
 				) : (
-					<div className="border-t-2 border-fuchsia-800">
-						<img src={logo} className="App-logo" alt="logo" />
-						<p className="border border-fuchsia-800">
-							See if your favorite song can win the battle of taste!
-						</p>
-					</div>
+					<Hero />
 				)}
 
 				<div className="song-search">
